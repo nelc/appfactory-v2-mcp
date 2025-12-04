@@ -12,28 +12,34 @@ This MCP (Model Context Protocol) server allows you to generate complete, deploy
 - 🔒 **HTTPS with SSL** (automatic with custom domain)
 - ⚛️ **Modern tech stack** (Node.js + React)
 
-## Installation
+## Quick Start
 
-### Option 1: Install from GitHub (Recommended)
+### One-Time Setup (Automatic)
+
+Run this single command:
 
 ```bash
+curl -fsSL https://raw.githubusercontent.com/nelc/appfactory-v2-mcp/main/setup.sh | bash
+```
+
+This automatically:
+- ✅ Checks Node.js and GitHub CLI
+- ✅ Installs MCP tool
+- ✅ Configures Cursor
+- ✅ Authenticates GitHub
+
+**Then restart Cursor.**
+
+### Manual Installation (Alternative)
+
+If you prefer manual setup:
+
+```bash
+# 1. Install MCP tool
 npm install -g git+https://github.com/nelc/appfactory-v2-mcp.git
-```
 
-### Option 2: Install from npm (if published)
-
-```bash
-npm install -g @nelc/app-factory-mcp
-```
-
-## Configuration
-
-Add to your Cursor MCP settings:
-
-**Mac/Linux:** `~/.config/cursor/mcp.json`  
-**Windows:** `%APPDATA%\Cursor\mcp.json`
-
-```json
+# 2. Configure Cursor
+# Add to ~/.config/cursor/mcp.json (Mac/Linux) or %APPDATA%\Cursor\mcp.json (Windows):
 {
   "mcpServers": {
     "app-factory": {
@@ -41,13 +47,15 @@ Add to your Cursor MCP settings:
     }
   }
 }
-```
 
-Restart Cursor after adding this configuration.
+# 3. Restart Cursor
+```
 
 ## Usage
 
-### In Cursor, start a new chat:
+### Step 1: Generate Code in Cursor
+
+Start a new chat and say:
 
 ```
 Generate my Customer Tracker app using the App Factory tool.
@@ -62,26 +70,32 @@ Needs database: yes
 Needs file storage: no
 ```
 
-### The MCP tool will:
+Wait for all files to be generated.
 
-1. ✅ Generate complete application code
-2. ✅ Create frontend (React + Vite)
-3. ✅ Create backend (Node.js + Express)
-4. ✅ Create GitHub Actions workflow
-5. ✅ Set up database connection (if requested)
-6. ✅ Configure file storage (if requested)
+### Step 2: Deploy
 
-### Then simply:
+In Cursor terminal:
 
 ```bash
-# In Cursor terminal:
-gh repo create nelc/customer-tracker --private --source=. --push
+cd ~/customer-tracker  # or wherever code was generated
+./deploy.sh
 ```
 
-GitHub Actions will automatically:
-- Deploy to Cloud Run
-- Create Load Balancer with SSL
-- Output DNS configuration instructions
+**That's it!** The script handles:
+- ✅ Git initialization
+- ✅ GitHub repo creation
+- ✅ Code push
+- ✅ Deployment trigger
+
+### Step 3: Add DNS
+
+After ~5 minutes, the workflow outputs:
+
+```
+📋 Add DNS: customer-tracker.futurex.sa → 34.xxx.xxx.xxx
+```
+
+Add this A record in Cloudflare, then visit: `https://customer-tracker.futurex.sa`
 
 ## Examples
 
