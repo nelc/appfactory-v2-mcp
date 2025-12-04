@@ -1,0 +1,32 @@
+{
+  "name": "@nelc/app-factory-mcp",
+  "version": "2.0.0",
+  "description": "MCP server for NELC App Factory V2 - Generate production-ready Cloud Run apps from Cursor",
+  "main": "server.js",
+  "bin": {
+    "app-factory-mcp": "./server.js"
+  },
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "mcp",
+    "gcp",
+    "cloud-run",
+    "app-factory",
+    "cursor",
+    "ai",
+    "code-generation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nelc/appfactory-v2-mcp.git"
+  },
+  "author": "NELC",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
