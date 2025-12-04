@@ -186,10 +186,38 @@ Each app gets:
 - Database on shared Cloud SQL instance
 - HTTPS with wildcard SSL certificate
 
+## Security & Privacy
+
+### What this MCP server does:
+1. Takes your app requirements (name, features)
+2. Sends them to the public portal API
+3. Returns a generated prompt for code generation
+
+### Data handling:
+- ✅ **No secrets or credentials** stored or transmitted
+- ✅ **No code** sent to external services
+- ✅ **No proprietary data** leaves your machine
+- ✅ Only app requirements (name, features) sent to portal
+- ✅ Portal is public endpoint (same as web form)
+
+### What's NOT in this repo:
+- ❌ GCP credentials
+- ❌ Infrastructure configuration  
+- ❌ Deployment secrets
+- ❌ Any sensitive organizational data
+
+Safe to use and safe to be public. ✅
+
+## Repository Structure
+
+- **This repo (public):** MCP server for business users
+- **Infrastructure repo (private):** Portal, deployment scripts (admin only)
+
 ## Support
 
-- **Documentation:** https://github.com/nelc/appfactory-v2
+- **Documentation:** Contact your organization admin
 - **Issues:** https://github.com/nelc/appfactory-v2-mcp/issues
+- **MCP Protocol:** https://modelcontextprotocol.io
 
 ## License
 
